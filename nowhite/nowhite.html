@@ -124,15 +124,17 @@
 			//设置body高度，跟可视区域高度相同
 			document.body.style.height = document.documentElement.clientHeight + 'px';
 			//点击开始游戏starBtn按钮，beginFg页面消失，warp页面出现
-			starBtn.addEventListener('touchend', function() {
+			starBtn.addEventListener('touchstart', function(e) {
 				beginFg.style.display = 'none';
 				warp.style.display = 'block';
 				game();
+				e.preventDefault();
 			});
 			//点击重新开始restarBtn按钮，loseFg页面消失，warp页面出现
-			restarBtn.addEventListener('touchend', function() {
+			restarBtn.addEventListener('touchstart', function(e) {
 				loseFg.style.display = 'none';
 				game();
+				e.preventDefault();
 			});
 			
 			//整个游戏都是一个函数
@@ -174,7 +176,7 @@
 				gameFun();
 				function gameFun(){
 					for (var i = 0; i < liList.length; i++) {
-						liList[i].addEventListener('touchstart', function() {
+						liList[i].onmousedown = function(e) {
 							//若游戏结束，则不能再点击
 							if(!onOff){
 								return;
@@ -232,7 +234,9 @@
 									document.title = '踩黑块我得了'+goalNum+'分哦，来挑战我吧！';
 								},500);
 							}
-						});
+							
+//							e.preventDefault();
+						}
 					}
 				}
 				
