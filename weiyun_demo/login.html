@@ -90,10 +90,28 @@
 									</div>
 								</div>
 								<div class="inputbox">
-									<input type="text" name="userid" id="userid" placeholder="支持QQ号/邮箱/手机号登陆"/>
-									<input type="password" name="password" id="password" placeholder="密码"/>
+									<input type="text" name="userid" id="userid" placeholder="默认账号siky"/>
+									<input type="password" name="password" id="password" placeholder="默认密码123"/>
 									<input type="submit" class="login_btn" id="login_btn" value="登陆" />
 								</div>
+								<script>
+									var userId = $('#userid');
+									var passWord = $('#password');
+									var loginBtn = $('#login_btn');
+									
+									loginBtn.onclick = function() {
+										if(
+											userId.value == 'siky' &&
+											passWord.value == '123'
+										) {
+											window.location.href='https://sikychen.github.io/weiyun_demo/index.html';
+										}else if( userId.value != 'siky' ) {
+											userId.value = '账号输入错误，请输入siky'
+										}else if( passWord.value != '123' ) {
+											userId.value = '密码输入错误，请输入123'
+										}
+									}
+								</script>
 								<div class="login_box_bottom_btns clearfix">
 									<div class="fr">
 										<a href="javascript:;">忘了密码？</a>
