@@ -207,6 +207,9 @@ $(function(){//window.onload = function() {
 		
 		e.cancelBubble = true;
 	}
+	movetoBtn.onmousedown = function(e) {
+		e.cancelBubble = true;
+	}
 	
 	//点击删除按钮，删除选中的文件
 	deleteBtn.onclick = function(e) {
@@ -229,6 +232,10 @@ $(function(){//window.onload = function() {
 		}
 		e.cancelBubble = true;
 	}
+	deleteBtn.onmousedown = function(e) {
+		
+		e.cancelBubble = true;
+	}
 	
 	//点击重命名按钮，重命名
 	reNameBtn.onclick = function(e) {
@@ -240,6 +247,7 @@ $(function(){//window.onload = function() {
 				fileName = $('.file-name', afile);
 				
 			append(reNameIn, afile);
+			reNameIn.focus();
 			reNameIn.value = fileName.innerHTML;
 			reNameIn.style.display = 'block';
 			
@@ -255,10 +263,11 @@ $(function(){//window.onload = function() {
 					remove(reNameIn, afile);
 					setStatus( getChecked()[0], false );
 					
+					showControlMsg('重命名成功', true);
+					
 					newfileBtn.clicked = false;
 					document.onclick = null;
-					
-					showControlMsg('重命名成功', true);
+					document.onmousedown = null;
 				}
 			}
 			
@@ -268,8 +277,8 @@ $(function(){//window.onload = function() {
 					fileName.innerHTML = val;
 					getData(getChecked()[0].dataId).name = val;
 				}
-				remove(reNameIn, afile);
 				setStatus( getChecked()[0], false );
+				remove(reNameIn, afile);
 				document.onclick = null;
 			}
 			
@@ -286,6 +295,9 @@ $(function(){//window.onload = function() {
 		
 		e.cancelBubble = true;
 	}
+	reNameBtn.addEventListener('mousedown', function(e) {
+		e.stopPropagation();
+	});
 	
 	//自定义右键菜单
 	document.oncontextmenu = function() {
