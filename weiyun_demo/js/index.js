@@ -233,6 +233,7 @@ $(function(){//window.onload = function() {
 		e.cancelBubble = true;
 	}
 	deleteBtn.onmousedown = function(e) {
+		
 		e.cancelBubble = true;
 	}
 	
