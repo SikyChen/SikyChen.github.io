@@ -6,13 +6,13 @@ nvm 是 Node Version Manager 的缩写，即 node 的版本管理工具，使用
 
 ## 下载
 
-nvm-linux 的github地址
+nvm-linux 的 github 地址
 
 ``` text
 https://github.com/creationix/nvm
 ```
 
-nvm-windows 的github地址
+nvm-windows 的 github 地址
 
 ``` text
 https://github.com/coreybutler/nvm-windows
