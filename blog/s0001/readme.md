@@ -167,6 +167,41 @@ git push origin dev
 
 F1 -> Git:View History (git log)
 
+## 报错整理
+
+push 的时候报如下错误
+
+``` bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+The ECDSA host key for git.can-dao.com has changed,
+and the key for the corresponding IP address 10.200.103.5
+is unknown. This could either mean that
+DNS SPOOFING is happening or the IP address for the host
+and its host key have changed at the same time.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:FHWw2nT9oCjbhVXBxFSxipCTFBCrI3A0Q+wDDBIK77w.
+Please contact your system administrator.
+Add correct host key in /c/Users/Siky Chen/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /c/Users/Siky Chen/.ssh/known_hosts:1
+ECDSA host key for git.can-dao.com has changed and you have requested strict checking.
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+可能是服务器有更改，加密的密钥改变了，所以本机保存的你要就失效了，所以没有权限。需要重新保存密钥，密钥保存的位置在/user/.ssh/known_hosts。
+解决办法：把该文件删掉，然后重新 pull 或者 push ，会提示输入密码，重新输入密码就好了。
+
 ## 小结
 
 至此，应该可以完成：
